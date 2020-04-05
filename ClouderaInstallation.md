@@ -9,7 +9,8 @@ Kittirak Moungmingsuk
 - ควรเตรียมช่วงวันเวลาที่สะดวกในการติดตั้งต่อเนื่องกัน เพราะระบบคิดค่าใช้จ่ายตามเวลาที่เราใช้งาน
 - เราจะสั่งงานผ่านเครื่อง Edge เป็นหลัก
 
-[![Cloudera Hadoop Installation - Part 1 Introduction 11 minutes‬] (https://img.youtube.com/vi/j4tafWYtLKM/0.jpg)](https://www.youtube.com/watch?v=j4tafWYtLKM)
+[![Cloudera Hadoop Installation - Part 1 Introduction 11 minutes‬](https://img.youtube.com/vi/j4tafWYtLKM/0.jpg)](https://www.youtube.com/watch?v=j4tafWYtLKM)
+Cloudera Hadoop Installation - Part 1 Introduction 11 minutes‬
 
 #### สร้างและเตรียม Instance
 
@@ -48,6 +49,7 @@ vi /root/.ssh/id_rsa
 `chmod 600 .ssh/id_rsa`
 
 [![Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes‬](https://img.youtube.com/vi/QKw7J_Muuh0/0.jpg)](https://www.youtube.com/watch?v=QKw7J_Muuh0)
+Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes
 
 3. กำหนดไอพีและชื่อเครื่อง ในไฟล์ /etc/hosts เปลี่ยน xx เป็นไอพีที่คลาวด์จัดสรรมาให้ ดูที่หน้า instance (ใช้ไอพีวง public 203) ชื่อเครื่องแบบ Fully Qualified Domain Name (FQDN) เป็นเรื่องสำคัญ อ้างอิง https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/configure_network_names.html#configure_network_names
 
@@ -69,11 +71,9 @@ vi /root/.ssh/id_rsa
 
 #### 5. เตรียม parallel command
 5.1 สร้างไฟล์ชื่อ hosts ในโฮมไดเรกทอรี ใส่ชื่อเครื่องทุกเครื่องลงไป เว้น edge node เพื่อเอาไว้ให้สคริปต์มาอ่านแล้วส่งคำสั่งไปยังเครื่องที่ระบุไว้
-
 vi hosts
 
 คนที่ใช้ vi ไม่เป็นให้ใช้ gedit แล้วใส่ชื่อเครื่องดังต่อไปนี้ลงไป
-
 master1
 master2
 worker1
@@ -81,16 +81,13 @@ worker2
 worker3
 
 5.2 ติดตั้งโปรแกรม pdsh เพื่อให้สามารถสั่งคำสั่งไปยังหลายเครื่องในคำสั่งเดียวได้
-
 `yum install -y epel-release`
 `yum install -y pdsh`
 
 ใช้งาน pdsh ส่งคำสั่ง hostname ไปยังทุกเครื่อง
-
 `pdsh -w ^hosts hostname`
 
 5.3 สร้างไดเรกทอรี /root/bin แล้วสร้าง script สำหรับคัดลอกไฟล์ข้ามไปยังทุกเครื่องในคลัสเตอร์
-
 `mkdir bin`
 
 **vi /root/bin/pscp**
@@ -138,6 +135,9 @@ done
 # Cloudera Enterprise 6 Installation
 #### Cloudera Manager 6.3 Installation Guide
 #### วิธีการติดตั้งนี้อ้างอิงจาก https://www.cloudera.com/documentation/enterprise/6/6.3/topics/installation.html
+
+[![Cloudera Hadoop Installation - Part 3 Cloudera Manager 6 Installation ‪40 minutes‬](https://img.youtube.com/vi/oCuWBitA_ys/0.jpg)](https://www.youtube.com/watch?v=oCuWBitA_ys)
+Cloudera Hadoop Installation - Part 3 Cloudera Manager 6 Installation ‪40 minutes‬
 
 #### 0. install repository
 `wget http://210.4.137.246/repos/cm6/6.3.1/cloudera-manager.repo -P /etc/yum.repos.d/`
@@ -285,22 +285,15 @@ oozie oozie password
 Hue
 hue hue password
 
-#### 8. การเซ็ตระบบ High Availability ให้ HDFS
 
+[![Cloudera Hadoop Installation - Part 4 HDFS & YARN High Availability ‪12 minutes‬](https://img.youtube.com/vi/JXOyyT2M5i8/0.jpg)](https://www.youtube.com/watch?v=JXOyyT2M5i8)
+Cloudera Hadoop Installation - Part 4 HDFS & YARN High Availability ‪12 minutes
+
+#### 8. การเซ็ตระบบ High Availability ให้ HDFS
 ที่หน้าเว็บ Cloudera Manager เลือกไปที่ HDFS -> Actions --> Enable High Availability แล้วทำตามขั้นตอนที่ระบบแจ้ง
 
 JournalNode Hosts is edge, master1, master2
 JournalNode Edits Directory fill "/dfs/jn"
 
 #### 9. High Availability Yarn
-
 ที่หน้าเว็บ Cloudera Manager เลือกไปที่ Yarn -> Actions --> Enable High Availability
-
-
-
-
-
-
-[![Cloudera Hadoop Installation - Part 3 Cloudera Manager 6 Installation ‪40 minutes‬](https://img.youtube.com/vi/oCuWBitA_ys/0.jpg)](https://www.youtube.com/watch?v=oCuWBitA_ys)
-
-[![Cloudera Hadoop Installation - Part 4 HDFS & YARN High Availability ‪12 minutes‬](https://img.youtube.com/vi/JXOyyT2M5i8/1.jpg)](https://www.youtube.com/watch?v=JXOyyT2M5i8)
