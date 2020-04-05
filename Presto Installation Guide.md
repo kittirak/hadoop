@@ -21,7 +21,7 @@ alternatives --install "/usr/bin/java" "java" "/opt/jdk1.8.0_202/bin/java" 1 \
 --slave /usr/bin/javaws javaws /opt/jdk1.8.0_202/bin/javaws \
 --slave /usr/bin/jar jar /opt/jdk1.8.0_202/bin/jar
 
-alternatives --config java`
+alternatives --config java
 ```
 #### Install Presto
 
@@ -40,6 +40,7 @@ reference: https://prestodb.io/docs/current/installation/deployment.html
     ```
 
 4. create configuration file  etc/node.properties 
+
     `vi /opt/presto-server-0.233.1/etc/node.properties`
 
     ```
@@ -51,6 +52,7 @@ reference: https://prestodb.io/docs/current/installation/deployment.html
 
 
 5. create configuration file  etc/jvm.config
+
     `vi /opt/presto-server-0.233.1/etc/jvm.config`
 
    ```
