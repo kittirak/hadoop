@@ -42,13 +42,13 @@
 
 2. วิธีการใช้งาน putty เพื่อ ssh ไปยัง instance บนคลาวด์
 
-​       2.1 ดาวน์โหลด putty และ puttygen จากลิงค์ต่อไปนี้ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+    2.1 ดาวน์โหลด putty และ puttygen จากลิงค์ต่อไปนี้ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
-​       2.2 ใช้ puttygen แปลง (convert) private key เนื่องคีย์ที่ได้มา (นามสกุล .pem) เป็นแบบที่ใช้กับ ssh บน Unix/Linux ใช้กับ putty บนวินโดวส์ไม่ได้ จึงต้องแปลงให้เป็นรูปแบบที่ใช้งานได้ ให้ดูในเอกสาร https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+    2.2 ใช้ puttygen แปลง (convert) private key เนื่องคีย์ที่ได้มา (นามสกุล .pem) เป็นแบบที่ใช้กับ ssh บน Unix/Linux ใช้กับ putty บนวินโดวส์ไม่ได้ จึงต้องแปลงให้เป็นรูปแบบที่ใช้งานได้ ให้ดูในเอกสาร https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
 
-​       2.3 ใช้ putty ติดต่อเข้าไปยังเครื่อง edge วิธีการใช้งานก็มีตามลิงค์เอกสารในข้อ 2.2
+    2.3 ใช้ putty ติดต่อเข้าไปยังเครื่อง edge วิธีการใช้งานก็มีตามลิงค์เอกสารในข้อ 2.2
 
-​       2.4 นำ private key (ไฟล์ .pem) ไปใส่ยังเครื่อง edge เพื่อใช้ติดต่อไปยังเครื่องอื่น ๆ โดยคัดลอกไปวางไปยังตำแหน่ง default เวลา ssh จะได้ไม่ต้องระบุว่าใช้ key ไหน
+    2.4 นำ private key (ไฟล์ .pem) ไปใส่ยังเครื่อง edge เพื่อใช้ติดต่อไปยังเครื่องอื่น ๆ โดยคัดลอกไปวางไปยังตำแหน่ง default เวลา ssh จะได้ไม่ต้องระบุว่าใช้ key ไหน
 vi /root/.ssh/id_rsa
 
 คัดลอก เนื้อหาในไฟล์ .pem มาวาง บันทึกแล้วจากนั้นสั่งคำสั่งต่อไปนี้ปรับ permission ให้เฉพาะผู้ใช้นั้นเท่านั้นสามารถยุ่งกับไฟล์นี้ได้
@@ -159,12 +159,12 @@ ln -sf /usr/share/java/mysql-connector-java-5.1.46.jar /usr/share/java/mysql-con
 `wget http://210.4.137.246/repos/cm6/6.3.1/cloudera-manager.repo -P /etc/yum.repos.d/`
 
 แก้ไขสองบรรทัดต่อไปนี้ในไฟล์ /etc/yum.repos.d/cloudera-manager.repo เพื่อเปลี่ยนมาใช้ local repository ที่เตรียมไว้ให้
-
+```
 baseurl=http://210.4.137.246/repos/cm6/6.3.1/
 gpgkey=http://210.4.137.246/repos/cm6/6.3.1/RPM-GPG-KEY-cloudera
+```
 
-
-### 1 Install cloudera manager
+#### 1 Install cloudera manager
 ```
 yum install -y oracle-j2sdk1.8
 yum install -y cloudera-manager-server
@@ -275,7 +275,7 @@ pdsh -w ^hosts sysctl -p
 echo "vm.swappiness=10" > /etc/sysctl.d/hadoop.conf
 pscp /etc/sysctl.d/hadoop.conf
 ```
-#### 7.2 Set Transparent Huge Page Compaction is enabled and can cause significant performance problems. Run "echo never > /sys/kernel/mm/transparent_hugepage/defrag" and "echo never > /sys/kernel/mm/transparent_hugepage/enabled" to disable this
+#### 7.2 Set Transparent Huge Page Compaction 
 ```
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
