@@ -25,11 +25,11 @@
 
     | Port      | Application      |
     | --------- | ---------------- |
-    | 22        | ssh              |
-    | 7180      | cloudera manager |
+    | 22        | SSH              |
+    | 7180      | Cloudera Manager |
     | 8888,8889 | Hue              |
     | 9870      | HDFS web         |
-    | 10000     | hive beeline     |
+    | 10000     | Hive beeline     |
 
      1.5 วิธีการสร้าง Instance
      
@@ -50,11 +50,12 @@
     2.3 ใช้ putty ติดต่อเข้าไปยังเครื่อง edge วิธีการใช้งานก็มีตามลิงค์เอกสารในข้อ 2.2
 
     2.4 นำ private key (ไฟล์ .pem) ไปใส่ยังเครื่อง edge เพื่อใช้ติดต่อไปยังเครื่องอื่น ๆ โดยคัดลอกไปวางไปยังตำแหน่ง default เวลา ssh จะได้ไม่ต้องระบุว่าใช้ key ไหน
-vi /root/.ssh/id_rsa
+    
+    `vi /root/.ssh/id_rsa`
 
-คัดลอก เนื้อหาในไฟล์ .pem มาวาง บันทึกแล้วจากนั้นสั่งคำสั่งต่อไปนี้ปรับ permission ให้เฉพาะผู้ใช้นั้นเท่านั้นสามารถยุ่งกับไฟล์นี้ได้
+    คัดลอก เนื้อหาในไฟล์ .pem มาวาง บันทึกแล้วจากนั้นสั่งคำสั่งต่อไปนี้ปรับ permission ให้เฉพาะผู้ใช้นั้นเท่านั้นสามารถยุ่งกับไฟล์นี้ได้
 
-`chmod 600 .ssh/id_rsa`
+    `chmod 600 .ssh/id_rsa`
 
 **Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes**
 
@@ -70,6 +71,8 @@ vi /root/.ssh/id_rsa
 203.15x.xxx.xxx worker2.example.com worker2
 203.15x.xxx.xxx worker3.example.com worker3
 ```
+**หมายเหตุ** ระบบคลาวด์นี้มีปัญหาบางครั้ง instance ไม่สามารถติดต่อกันผ่าน public ip ได้ ก็ขอให้เปลี่ยนไปใช้ private ip (192) แทน **ระบบจริงให้เพียงไอพีเดียวเท่านั้น ควรเป็นไอพีที่แอปพลิเคชั่นติดต่อได้**
+
 4. ตั้งชื่อเครื่องทุกเครื่อง (** สั่งทีละบรรทัด เพราะเป็นการติดต่อระหว่างเครื่องครั้งแรกจะมีการถาม Y/N เพื่อรับคีย์)
 ```
 `hostnamectl set-hostname edge.example.com`
@@ -100,9 +103,10 @@ yum install -y pdsh
 `pdsh -w ^hosts hostname`
 
 5.3 สร้างไดเรกทอรี /root/bin แล้วสร้าง script สำหรับคัดลอกไฟล์ข้ามไปยังทุกเครื่องในคลัสเตอร์
+
 `mkdir bin`
 
-**vi /root/bin/pscp**
+vi /root/bin/pscp
 ```
 #!/bin/sh
 for i in cat /root/hosts
@@ -110,8 +114,8 @@ do
   scp $1 ${i}:$1
 done
 ```
+Change permission setting to excecute
 
-**Change permission setting to excecute**
 `chmod +x /root/bin/pscp`
 
 5.4 send /etc/hosts to all host
@@ -165,13 +169,13 @@ baseurl=http://210.4.137.246/repos/cm6/6.3.1/
 gpgkey=http://210.4.137.246/repos/cm6/6.3.1/RPM-GPG-KEY-cloudera
 ```
 
-#### 1 Install cloudera manager
+#### 1. Install cloudera manager
 ```
 yum install -y oracle-j2sdk1.8
 yum install -y cloudera-manager-server
 ```
 
-#### 2.Creating Databases for Cloudera Software
+#### 2. Creating Databases for Cloudera Software
 ref. https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_mariadb.html#install_cm_mariadb_newdbs
 
 **ในเอกสารนี้ กำหนดรหัสผ่านว่า password ในการใช้งานจริงท่านควรกำหนดรหัสผ่านที่เหมาะสม**
