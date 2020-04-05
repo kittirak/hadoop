@@ -1,6 +1,5 @@
 # วิธีติดตั้ง Cloudera Hadoop ด้วย Cloudera Manager
-
-Kittirak Moungmingsuk
+โดย กิตติรักษ์ ม่วงมิ่งสุข
 
 #### คุยกันก่อน
 
@@ -238,11 +237,9 @@ worker2.example.com
 worker3.example.com
 
 **Select Repository**
-
 http://210.4.137.246/repos/cm6/6.3.1/
 
 **แก้ไข remote parcel repo บรรทัดแรก เปลี่ยนเป็น**
-
 http://210.4.137.246/repos/cdh6/6.3.2/parcels/
 
 #### 7. Tuning kernel parameter for Hadoop
