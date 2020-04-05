@@ -7,10 +7,11 @@ Kittirak Moungmingsuk
 - ขั้นตอนตามเอกสารนี้ อ้างอิงกับระบบของ http://OpenLandScape.cloud (OLS) 
 - เราสร้าง Hadoop Cluster ขนาด 6 โหนด (node) 1 edge, 2 master, 3 worker
 - ควรเตรียมช่วงวันเวลาที่สะดวกในการติดตั้งต่อเนื่องกัน เพราะระบบคิดค่าใช้จ่ายตามเวลาที่เราใช้งาน
-- เราจะสั่งงานผ่านเครื่อง Edge เป็นหลัก
+- มีวีดีโอสอนอยู่ 4 คลิป ค่อยทำตามไปได้ครับ
+
+**ต่อไปนี้เป็นคลิปเริ่มต้น Part 1 Introduction 11 minutes‬**
 
 [![Cloudera Hadoop Installation - Part 1 Introduction 11 minutes‬](https://img.youtube.com/vi/j4tafWYtLKM/0.jpg)](https://www.youtube.com/watch?v=j4tafWYtLKM)
-Cloudera Hadoop Installation - Part 1 Introduction 11 minutes‬
 
 #### สร้างและเตรียม Instance
 
@@ -48,8 +49,10 @@ vi /root/.ssh/id_rsa
 
 `chmod 600 .ssh/id_rsa`
 
+**Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes**
+
 [![Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes‬](https://img.youtube.com/vi/QKw7J_Muuh0/0.jpg)](https://www.youtube.com/watch?v=QKw7J_Muuh0)
-Cloudera Hadoop Installation - Part 2 OS Preparation ‪27 minutes
+
 
 3. กำหนดไอพีและชื่อเครื่อง ในไฟล์ /etc/hosts เปลี่ยน xx เป็นไอพีที่คลาวด์จัดสรรมาให้ ดูที่หน้า instance (ใช้ไอพีวง public 203) ชื่อเครื่องแบบ Fully Qualified Domain Name (FQDN) เป็นเรื่องสำคัญ อ้างอิง https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/configure_network_names.html#configure_network_names
 
@@ -136,8 +139,10 @@ done
 #### Cloudera Manager 6.3 Installation Guide
 #### วิธีการติดตั้งนี้อ้างอิงจาก https://www.cloudera.com/documentation/enterprise/6/6.3/topics/installation.html
 
+**Part 3 Cloudera Manager 6 Installation ‪40 minutes‬**
+
 [![Cloudera Hadoop Installation - Part 3 Cloudera Manager 6 Installation ‪40 minutes‬](https://img.youtube.com/vi/oCuWBitA_ys/0.jpg)](https://www.youtube.com/watch?v=oCuWBitA_ys)
-Cloudera Hadoop Installation - Part 3 Cloudera Manager 6 Installation ‪40 minutes‬
+
 
 #### 0. install repository
 `wget http://210.4.137.246/repos/cm6/6.3.1/cloudera-manager.repo -P /etc/yum.repos.d/`
@@ -285,9 +290,10 @@ oozie oozie password
 Hue
 hue hue password
 
+**Part 4 HDFS & YARN High Availability ‪12 minutes**
 
 [![Cloudera Hadoop Installation - Part 4 HDFS & YARN High Availability ‪12 minutes‬](https://img.youtube.com/vi/JXOyyT2M5i8/0.jpg)](https://www.youtube.com/watch?v=JXOyyT2M5i8)
-Cloudera Hadoop Installation - Part 4 HDFS & YARN High Availability ‪12 minutes
+
 
 #### 8. การเซ็ตระบบ High Availability ให้ HDFS
 ที่หน้าเว็บ Cloudera Manager เลือกไปที่ HDFS -> Actions --> Enable High Availability แล้วทำตามขั้นตอนที่ระบบแจ้ง
