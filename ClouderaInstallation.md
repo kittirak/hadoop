@@ -75,7 +75,7 @@
 
 4. ตั้งชื่อเครื่องทุกเครื่อง (** สั่งทีละบรรทัด เพราะเป็นการติดต่อระหว่างเครื่องครั้งแรกจะมีการถาม Y/N เพื่อรับคีย์)
 ```
-`hostnamectl set-hostname edge.example.com`
+hostnamectl set-hostname edge.example.com
 ssh master1 hostnamectl set-hostname master1.example.com
 ssh master2 hostnamectl set-hostname master2.example.com
 ssh worker1 hostnamectl set-hostname worker1.example.com
@@ -132,14 +132,17 @@ pscp /etc/selinux/config
 #### 6. setup DBMS (in this workshop use mariaDB)
 
 6.1 install mariadb
+
 `yum install -y mariadb-server`
 
 6.2 start mariadb
-คำสั่ง enable ใช้สำหรับทำ autostart ให้บริการนั้นเริ่มทำงานทุกครั้งที่เปิดเครื่อง
-`systemctl enable mariadb`
 
-คำสั่ง start ใช้เริ่มการทำงาน ยังมี stop และ status อีกที่ใช้ได้
-`systemctl start mariadb`
+```
+systemctl enable mariadb
+systemctl start mariadb
+```
+- คำสั่ง **enable** ใช้สำหรับทำ autostart ให้บริการนั้นเริ่มทำงานทุกครั้งที่เปิดเครื่อง
+- คำสั่ง **start** ใช้เริ่มการทำงาน ยังมี stop และ status อีกที่ใช้ได้
 
 6.3 setup MySQL JDBC
 ```
@@ -178,7 +181,10 @@ yum install -y cloudera-manager-server
 #### 2. Creating Databases for Cloudera Software
 ref. https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_mariadb.html#install_cm_mariadb_newdbs
 
-**ในเอกสารนี้ กำหนดรหัสผ่านว่า password ในการใช้งานจริงท่านควรกำหนดรหัสผ่านที่เหมาะสม**
+**หมายเหตุ เรื่องความปลอดภัย** ในการใช้งานจริงท่านควร :-
+- ติดตั้งฐานข้อมูลให้ปลอดภัย ด้วยการรัน mysql_secure_installaion ก่อน
+- กำหนดรหัสผ่านที่เหมาะสม เพราะในเอกสารนี้ใช้รหัสผ่านทุกอันว่า password
+
 ```
 mysql
 CREATE DATABASE scm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
