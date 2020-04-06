@@ -71,7 +71,7 @@
 203.15x.xxx.xxx worker2.example.com worker2
 203.15x.xxx.xxx worker3.example.com worker3
 ```
-**หมายเหตุ** ระบบคลาวด์นี้มีปัญหาบางครั้ง instance ไม่สามารถติดต่อกันผ่าน public ip ได้ ก็ขอให้เปลี่ยนไปใช้ private ip (192) แทน **ระบบจริงให้เพียงไอพีเดียวเท่านั้น ควรเป็นไอพีที่แอปพลิเคชั่นติดต่อได้**
+**หมายเหตุ** ระบบคลาวด์นี้มีปัญหาบางครั้ง instance ไม่สามารถติดต่อกันผ่าน public ip ได้ ก็ขอให้เปลี่ยนไปใช้ private ip (192) แทน **ระบบจริงให้ใช้เพียงไอพีเดียวเท่านั้น ควรเป็นไอพีที่แอปพลิเคชั่นติดต่อได้**
 
 4. ตั้งชื่อเครื่องทุกเครื่อง (** สั่งทีละบรรทัด เพราะเป็นการติดต่อระหว่างเครื่องครั้งแรกจะมีการถาม Y/N เพื่อรับคีย์)
 ```
@@ -84,7 +84,8 @@ ssh worker3 hostnamectl set-hostname worker3.example.com
 ```
 #### 5. เตรียม parallel command
 5.1 สร้างไฟล์ชื่อ hosts ในโฮมไดเรกทอรี ใส่ชื่อเครื่องทุกเครื่องลงไป เว้น edge node เพื่อเอาไว้ให้สคริปต์มาอ่านแล้วส่งคำสั่งไปยังเครื่องที่ระบุไว้
-vi hosts
+
+`vi hosts`
 
 คนที่ใช้ vi ไม่เป็นให้ใช้ gedit แล้วใส่ชื่อเครื่องดังต่อไปนี้ลงไป
 ```
@@ -106,7 +107,8 @@ yum install -y pdsh
 
 `mkdir bin`
 
-vi /root/bin/pscp
+`vi /root/bin/pscp`
+
 ```
 #!/bin/sh
 for i in cat /root/hosts
@@ -181,7 +183,7 @@ yum install -y cloudera-manager-server
 #### 2. Creating Databases for Cloudera Software
 ref. https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_mariadb.html#install_cm_mariadb_newdbs
 
-**หมายเหตุ เรื่องความปลอดภัย** ในการใช้งานจริงท่านควร :-
+**หมายเหตุ เพื่อความปลอดภัย** ในการใช้งานจริงท่านควร :-
 - ติดตั้งฐานข้อมูลให้ปลอดภัย ด้วยการรัน mysql_secure_installaion ก่อน
 - กำหนดรหัสผ่านที่เหมาะสม เพราะในเอกสารนี้ใช้รหัสผ่านทุกอันว่า password
 
@@ -252,7 +254,7 @@ go to http://<server_host>:7180
 Username: admin
 Password: admin
 
-#### 5. ถ้ารอสัก 2 นาทีแล้วหน้าเว็บไม่ขึ้น ให้ดู log ว่ามี error หรือไม่ ถ้ามีให้เอา error ไปค้นเพื่อแก้ปัญหา แก้ไม่ได้เอา error มาให้ผมดูครับ
+#### 5. ถ้ารอสัก 2 นาทีแล้วหน้าเว็บไม่ขึ้น ให้ดู log ว่ามี error หรือไม่ ถ้ามีให้เอา error ไปค้นเพื่อแก้ปัญหา 
 `tail -n 500 /var/log/cloudera-scm-server/cloudera-scm-server.log`
 
 
