@@ -85,7 +85,7 @@ ssh worker3 hostnamectl set-hostname worker3.example.com
 #### 5. เตรียม parallel command
 5.1 สร้างไฟล์ชื่อ hosts ในโฮมไดเรกทอรี ใส่ชื่อเครื่องทุกเครื่องลงไป เว้น edge node เพื่อเอาไว้ให้สคริปต์มาอ่านแล้วส่งคำสั่งไปยังเครื่องที่ระบุไว้
 
-`vi hosts`
+`vi /root/hosts`
 
 คนที่ใช้ vi ไม่เป็นให้ใช้ gedit แล้วใส่ชื่อเครื่องดังต่อไปนี้ลงไป
 ```
@@ -249,7 +249,7 @@ cat /etc/cloudera-scm-server/db.properties
 systemctl enable cloudera-scm-server
 systemctl start cloudera-scm-server
 ```
-go to http://<server_host>:7180
+รอสักนาทีแล้วเปิดเว็บบราวเซอร์ของเราไปที่ http://<ไอพีของเครื่อง edge>:7180
 
 Username: admin
 Password: admin
