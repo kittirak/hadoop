@@ -111,7 +111,7 @@ yum install -y pdsh
 
 ```
 #!/bin/sh
-for i in cat /root/hosts
+for i in `cat /root/hosts`
 do
   scp $1 ${i}:$1
 done
