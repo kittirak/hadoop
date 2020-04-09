@@ -33,7 +33,7 @@ reference: https://prestodb.io/docs/current/installation/deployment.html
 
     `tar xvzf presto-server-0.233.1.tar.gz -C /opt`
 
-3. create directory ที่ทุกเครื่อง
+3. create directory at all nodes.
     ```
     mkdir -p /var/presto/data
     mkdir -p /opt/presto-server-0.233.1/etc/catalog/
@@ -48,7 +48,7 @@ reference: https://prestodb.io/docs/current/installation/deployment.html
     node.id=ffffffff-ffff-ffff-ffff-ffffffffffff
     node.data-dir=/var/presto/data
     ```
-    **remark** node.id is UUID can generate from command **'uuidgen'** and must unique in every node can
+    **remark** node.id is UUID can generate from command **'uuidgen'** and must unique in every node.
 
 
 5. create configuration file  etc/jvm.config
